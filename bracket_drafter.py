@@ -35,7 +35,7 @@ def draft_groups(group_size: int, group_amount: int, _players: List[str]) -> Lis
 
     for _ in range(group_amount):
         group = draft_group(group_size, remaining_players)
-        remaining_players = [player for player in _players if player not in group]
+        remaining_players = [player for player in remaining_players if player not in group]
         groups.append(group)
 
     return groups
