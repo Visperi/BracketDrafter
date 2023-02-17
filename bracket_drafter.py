@@ -76,6 +76,10 @@ if __name__ == "__main__":
     _group_amount = args.gamount or 2
     _group_size = args.gsize or max(len(_players) // _group_amount, 1)
 
+    if _group_amount * _group_size > len(_players):
+        raise ValueError(f"Impossible combination of brackets and bracket size. Got total of {len(_players)} "
+                         f"players but {_group_amount} groups of {_group_size} players was chosen")
+
     _players = read_player_file(players_file_path)
     _groups = draft_groups(_group_size, _group_amount, _players)
     for i, _group in enumerate(_groups):
