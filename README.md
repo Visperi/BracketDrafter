@@ -1,0 +1,2 @@
+To generate brackets, just add `players.txt` to the project root folder and run the script. Group amount and group 
+sizes can be adjusted using command line arguments. Optional argument `--help` prints argument descriptions.
