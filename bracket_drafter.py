@@ -84,4 +84,4 @@ if __name__ == "__main__":
 
     if len(_players) % _group_amount != 0:
         left_out_players = parse_left_out_players(_players, _groups)
-        print(f"\nFollowing player did not fit into evenly divided groups: {left_out_players}")
+        print(f"\nFollowing players did not fit into evenly divided groups: {left_out_players}")
