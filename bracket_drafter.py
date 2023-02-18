@@ -5,9 +5,11 @@ from typing import List
 ALPHABET = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 
-def read_player_file(filepath: str) -> List[str]:
+def read_player_file(filepath: str, separator: str) -> List[str]:
     with open(filepath, "r") as players_file:
-        return players_file.read().splitlines()
+        content = players_file.read()
+
+    return [player for player in content.split(separator) if player]
 
 
 def draft_group(group_size: int, _players: List[str]) -> List[str]:
@@ -47,6 +49,9 @@ def parse_arguments(**kwargs) -> argparse.Namespace:
     parser.add_argument("--pfile", "--player-file",
                         type=str,
                         help="Configure a file where players are read from. Default value: players.txt")
+    parser.add_argument("--separator", "--sep",
+                        type=str,
+                        help="Configure a player separator in players file. Default value: newline marker")
     parser.add_argument("--gamount", "--group-amount",
                         type=int,
                         help="Configure amount of groups in the tournament. Default value: 2")
@@ -71,7 +76,9 @@ if __name__ == "__main__":
     args = parse_arguments()
 
     players_file_path = args.pfile or "players.txt"
-    _players = read_player_file(players_file_path)
+    players_file_separator = args.separator or "\n"
+    print(players_file_separator)
+    _players = read_player_file(players_file_path, players_file_separator)
 
     _group_amount = args.gamount or 2
     _group_size = args.gsize or max(len(_players) // _group_amount, 1)
