@@ -77,7 +77,6 @@ if __name__ == "__main__":
 
     players_file_path = args.pfile or "players.txt"
     players_file_separator = args.separator or "\n"
-    print(players_file_separator)
     _players = read_player_file(players_file_path, players_file_separator)
 
     _group_amount = args.gamount or 2
