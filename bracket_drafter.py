@@ -80,7 +80,6 @@ if __name__ == "__main__":
         raise ValueError(f"Impossible combination of brackets and bracket size. Got total of {len(_players)} "
                          f"players but {_group_amount} groups of {_group_size} players was chosen")
 
-    _players = read_player_file(players_file_path)
     _groups = draft_groups(_group_size, _group_amount, _players)
     for i, _group in enumerate(_groups):
         print(f"\nGROUP {ALPHABET[i]}:")
